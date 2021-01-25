@@ -70,4 +70,14 @@ void main() {
   // edge styles, ...) of child widget
   // Use 'BoxDecoration' class to style ("decorate") container
 
+  // Stack and Positioned
+  // The Stack widget does not constrain width and height, so no overflow error will
+  // occur if the Stack's children are placed outside the UI
+  // The order of placing children really matters: Children placed at the bottom
+  // of the list will be rendered on-screen, on top of the others. In other words,
+  // the background widget always appears first in the list.
+  // Use 'Positioned' to provide a fixed position for a widget in relation to the
+  // parent widget
+
+
 }

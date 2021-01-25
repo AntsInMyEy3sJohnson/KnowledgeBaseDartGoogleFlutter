@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,18 +19,56 @@ class MyApp extends StatelessWidget {
           title: Text("Chapter 9 Examples"),
         ),
         body: Container(
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text("Some text"),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Center(child: Text("Child 1")),
+              Center(child: Text("Child 2")),
+              Center(
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 60,
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                      ),
+                    ),
+                    Positioned(
+                      // Those positions refer to the parent widget
+                      top: 30,
+                      left: 30,
+                      child: Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(color: Colors.yellow),
+                      ),
+                    ),
+                    Text("I go above all the other widgets on the stack."),
+                  ],
+                ),
+              )
+            ],
+          ),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.lightBlue,
+                spreadRadius: 4,
+                blurRadius: 6,
+                offset: Offset(0, 2),
+              ),
+            ],
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Colors.blue,
+                Colors.white,
               ],
             ),
-          ),
-          width: 100,
-          height: 100,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle
           ),
         ),
       ),
