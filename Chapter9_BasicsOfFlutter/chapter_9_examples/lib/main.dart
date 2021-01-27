@@ -1,3 +1,4 @@
+import 'package:chapter_9_examples/my_stateful_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -48,6 +49,9 @@ class MyApp extends StatelessWidget {
                     Text("I go above all the other widgets on the stack."),
                   ],
                 ),
+              ),
+              Center(
+                child: MyStatefulWidget("Chapter on stateful widgets"),
               )
             ],
           ),

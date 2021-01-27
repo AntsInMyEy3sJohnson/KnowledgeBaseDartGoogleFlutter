@@ -79,5 +79,27 @@ void main() {
   // Use 'Positioned' to provide a fixed position for a widget in relation to the
   // parent widget
 
+  // Stateless and stateful widgets
+  // 'Widget': subclasses either 'StatelessWidget' or 'StatefulWidget' and thus
+  // overwrites the 'build()' method
+  // Stateless widget: Use when widget does not depend on external events or data sources,
+  // but is "self-sufficient". Once created, the widget will be static ("immutable").
+  // (This doesn't mean the widget can't take data from the outside -- it can declare
+  // parameters in its constructor just like any other class --, it simply means the
+  // passed data won't change once the object has been initialized because its internal
+  // state doesn't change.)
+  // Stateful widget: UI that is likely to change over time based on external events
+  // or data sources (result of HTTP request, screen rotation, button tap, ...). Stateful
+  // widgets are divided into two components: the widget itself, and its state. Whenever
+  // Flutter rebuilds the widget tree to refresh the UI, the 'build()' method of
+  // 'State<T>' -- implemented by the widget's state holder class -- is invoked.
+  // Actors within the state holder class have access to the 'setState()' method.
+  // Whenever 'setState()' is called, Flutter will rebuild the widget (only what's inside
+  // the 'build()' method will be refreshed, though -- state living outside of it
+  // will be preserved).
+  // Important distinction: What changes is the state in the widget's state holder
+  // class, not the widget itself -- once the widget has been inserted into the
+  // widget tree, it won't change (just the stateless widgets). That's why stateful
+  // widgets, too, can have a 'const' constructor.
 
 }
