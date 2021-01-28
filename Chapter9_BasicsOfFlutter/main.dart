@@ -102,4 +102,25 @@ void main() {
   // widget tree, it won't change (just the stateless widgets). That's why stateful
   // widgets, too, can have a 'const' constructor.
 
+  // Rough guideline for when to use a stateless widget and when to use a stateful 
+  // one: When every instance variable of the widget can be 'final', then use 
+  // a stateless widget with a 'const' constructor -- the internal state is immutable, 
+  // so using a stateful widget wouldn't make any sense. If, on the other hand, at least
+  // one instance variable cannot be final, it means the internal state of the widget's
+  // instance(-s) is mutable and needs to be encapsulated within the state holder class
+  // of a stateful widget.
+
+  // Keys
+  // Every widget in Flutter exposes the optional 'key' parameter
+  // A key is used to uniquely identify a widget in the widget tree
+  // Four types of keys: ValueKey, ObjectKey, UniqueKey, GlobalKey
+  // ValueKey: Use when value naturally and uniquely identifies a business domain object.
+  // (Also, ValueKey is the default type of key.)
+  // ObjectKey: Use when multiple properties are required to uniquely identify an
+  // instance of a complex object
+  // UniqueKey: Unique across the entire app, so only equal to itself. Use when
+  // there is no single unique value and no unique combination of values (so no
+  // ValueKey and no ObjectKey, respectively).
+  // GlobalKey: Useful to keep the state of multiple widgets in sync
+
 }
