@@ -102,9 +102,9 @@ void main() {
   // widget tree, it won't change (just the stateless widgets). That's why stateful
   // widgets, too, can have a 'const' constructor.
 
-  // Rough guideline for when to use a stateless widget and when to use a stateful 
-  // one: When every instance variable of the widget can be 'final', then use 
-  // a stateless widget with a 'const' constructor -- the internal state is immutable, 
+  // Rough guideline for when to use a stateless widget and when to use a stateful
+  // one: When every instance variable of the widget can be 'final', then use
+  // a stateless widget with a 'const' constructor -- the internal state is immutable,
   // so using a stateful widget wouldn't make any sense. If, on the other hand, at least
   // one instance variable cannot be final, it means the internal state of the widget's
   // instance(-s) is mutable and needs to be encapsulated within the state holder class
@@ -122,5 +122,56 @@ void main() {
   // there is no single unique value and no unique combination of values (so no
   // ValueKey and no ObjectKey, respectively).
   // GlobalKey: Useful to keep the state of multiple widgets in sync
+
+  // Rebuilds and optimization
+  // Many evens can trigger the widget tree to be repainted, including:
+  // * 'setState()' is invoked
+  // * Device's screen is rotated
+  // * An awaited 'Future<T>' result is available
+  // * Listening to event stream
+  // "Widget tree repainted" --> The 'build()' method of a specific widget in the
+  // tree has been invoked, and thus the widget itself plus all its children are
+  // rebuilt
+  // Although Flutter is very efficient at rebuilding the widget tree, the goal
+  // should be to allow widgets to be rebuilt only when it's really required
+
+  // Optimization technique 1: 'const' constructor
+  // If a widget exposes a 'const' constructor, then it's possible to create a
+  // constant list of widgets (especially useful for parent widgets that offer
+  // a 'children' parameter, such as ListView, Row, Column, etc.), and if the list
+  // is marked 'const', then every item it contains will also be constant. Here's
+  // why that's important: Flutter builds constant widgets only once. Hence, using
+  // 'const' constructors on widgets is like caching them: Once created, Flutter
+  // will never rebuild them (which makes sense -- if a widget exposes a 'const'
+  // constructor, then all its properties are immutable, and because that makes
+  // the widget itself immutable, there's no point rebuilding it).
+  // --> Using 'const' constructors as often as possible is a jolly good idea!
+  // Stateful widgets can have 'const' constructors, too.
+
+  // Optimization technique 2: Prefer widget composition over functions
+  // If you need a reusable block of code, put it inside its own widget
+  // and never use a function to return the widget. That's because...
+  // * ... functions don't have 'const' constructors
+  // * ... widgets returned by a function don't have a 'BuildContext', hence
+  // Flutter knows nothing about them and is therefore forced to rebuild them
+  // every time
+  // The reason there can't be a BuildContext for a widget returned by a function
+  // is that functions are not leaves in the widget tree (as opposed to Widget
+  // classes).
+
+  // Architecture
+  // Element and RenderObject
+  // Along with the widget tree, Flutter internally maintains the element tree
+  // and the render tree
+  // Render tree: Very expensive to create because it contains all logic to render
+  // the corresponding widget (layout, constraints, painting, hit testing, ...)
+  // Element tree: Element as link between a widget and its corresponding RenderObjects
+  // Elements are used to compare items and examine them for changes, but not for
+  // rendering
+  // Widget tree: What a Flutter developer will work with most of the time -- contains
+  // classes extending 'StatelessWidget' or 'StatefulWidget'
+  // The 'BuildContext' parameter exposed by any 'build()' method essentially
+  // represents the Element associated to the widget
+
 
 }
