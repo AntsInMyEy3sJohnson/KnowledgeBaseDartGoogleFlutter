@@ -1,6 +1,6 @@
-import 'package:chapter_11_examples/chapter_11_1_set_state_ui_updates/demo_page.dart';
-import 'package:chapter_11_examples/chapter_11_2_passing_state_with_provider/counter_model.dart';
-import 'package:chapter_11_examples/chapter_11_2_passing_state_with_provider/demo_page_using_provider.dart';
+import 'package:chapter_11_examples/set_state_ui_updates/demo_page.dart';
+import 'package:chapter_11_examples/passing_state_with_provider/counter_model.dart';
+import 'package:chapter_11_examples/passing_state_with_provider/demo_page_using_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

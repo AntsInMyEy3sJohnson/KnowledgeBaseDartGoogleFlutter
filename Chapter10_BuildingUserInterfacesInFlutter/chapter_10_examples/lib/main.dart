@@ -1,9 +1,9 @@
-import 'package:chapter_10_examples/chapter_10_1_material_buttons_dialogs/button_with_alert_dialog.dart';
-import 'package:chapter_10_examples/chapter_10_1_material_buttons_dialogs/button_with_bottom_sheet.dart';
-import 'package:chapter_10_examples/chapter_10_1_material_buttons_dialogs/button_with_simple_dialog.dart';
-import 'package:chapter_10_examples/chapter_10_1_material_buttons_dialogs/buttons_and_dialogs_scaffold.dart';
-import 'package:chapter_10_examples/chapter_10_3_response_uis/responsive_list_view.dart';
-import 'package:chapter_10_examples/chapter_10_3_response_uis/unresponsive_list_view.dart';
+import 'package:chapter_10_examples/material_buttons_dialogs/button_with_alert_dialog.dart';
+import 'package:chapter_10_examples/material_buttons_dialogs/button_with_bottom_sheet.dart';
+import 'package:chapter_10_examples/material_buttons_dialogs/button_with_simple_dialog.dart';
+import 'package:chapter_10_examples/material_buttons_dialogs/buttons_and_dialogs_scaffold.dart';
+import 'package:chapter_10_examples/responsive_user_interfaces//responsive_list_view.dart';
+import 'package:chapter_10_examples/responsive_user_interfaces//unresponsive_list_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
