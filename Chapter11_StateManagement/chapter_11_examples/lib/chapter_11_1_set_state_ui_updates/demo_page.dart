@@ -54,7 +54,7 @@ class _DemoPageState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Updating the UI using 'setState()'"),
+        title: Text("UI updates using 'setState()'"),
       ),
       body: Center(
         child: Padding(
