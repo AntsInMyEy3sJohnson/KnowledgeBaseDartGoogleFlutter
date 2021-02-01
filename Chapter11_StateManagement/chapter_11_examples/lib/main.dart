@@ -1,20 +1,30 @@
 import 'package:chapter_11_examples/bloc_pattern/demo_page_using_bloc.dart';
 import 'package:chapter_11_examples/bloc_pattern/demo_page_using_bloc_listener.dart';
-import 'package:chapter_11_examples/set_state_ui_updates/demo_page.dart';
 import 'package:chapter_11_examples/passing_state_with_provider/counter_model.dart';
 import 'package:chapter_11_examples/passing_state_with_provider/demo_page_using_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
   // The BlocObserver is very useful in cases where things happening within
   // Blocs need to be logged or analyzed. The BlocObserver passively observes; it
   // cannot interact with any state.
   // The below implies that there is one Observer for all Blocs within the
   // entire app.
   Bloc.observer = GenericObserver();
+  await _initHydratedBloc();
   runApp(const MyApp());
+}
+
+Future<void> _initHydratedBloc() async {
+  // Necessary for storing state with HydratedBloc
+  WidgetsFlutterBinding.ensureInitialized();
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
 }
 
 class MyApp extends StatelessWidget {
