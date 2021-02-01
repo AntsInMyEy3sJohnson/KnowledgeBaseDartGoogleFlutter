@@ -11,7 +11,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeData> {
 
   // Make 'light' the default
   // Only set when there is no previous state to be loaded
-  ThemeBloc(ThemeData themeData) : super(ThemeData.light());
+  ThemeBloc() : super(ThemeData.light());
 
   @override
   ThemeData fromJson(Map<String, dynamic> json) {

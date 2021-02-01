@@ -2,6 +2,8 @@ import 'package:chapter_11_examples/bloc_pattern/demo_page_using_bloc.dart';
 import 'package:chapter_11_examples/bloc_pattern/demo_page_using_bloc_listener.dart';
 import 'package:chapter_11_examples/passing_state_with_provider/counter_model.dart';
 import 'package:chapter_11_examples/passing_state_with_provider/demo_page_using_provider.dart';
+import 'package:chapter_11_examples/persisting_state_with_hydrated_bloc/theme_bloc.dart';
+import 'package:chapter_11_examples/persisting_state_with_hydrated_bloc/theme_chooser.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -39,7 +41,20 @@ class MyApp extends StatelessWidget {
       // home: const DemoPage(),
       // home: const ProviderHome(),
       // home: const BlocHome(),
-      home: const BlocWithListenerHome(),
+      // home: const BlocWithListenerHome(),
+      home: const ThemeBlocHome(),
+    );
+  }
+}
+
+class ThemeBlocHome extends StatelessWidget {
+  const ThemeBlocHome();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => ThemeBloc(),
+      child: const ThemeChooser(),
     );
   }
 }
