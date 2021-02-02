@@ -13,6 +13,9 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeData> {
   // Only set when there is no previous state to be loaded
   ThemeBloc() : super(ThemeData.light());
 
+  /// Called when attempting to read some previously persisted
+  /// state from user's device. Caution: Make sure to return
+  /// 'null' in case of exceptions!
   @override
   ThemeData fromJson(Map<String, dynamic> json) {
     try {
@@ -36,6 +39,9 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeData> {
     }
   }
 
+  /// Called on *every* state change in order to sync the state
+  /// to the device. --> Performance considerations for when
+  /// many blocs save lots of complex state?
   @override
   Map<String, bool> toJson(ThemeData state) {
     try {

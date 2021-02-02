@@ -1,18 +1,17 @@
+import 'package:chapter_11_examples/simple_state_management_with_cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:chapter_11_examples/bloc_pattern/demo_page_using_bloc.dart';
 
-class CounterDisplay extends StatelessWidget {
-  const CounterDisplay();
+class CubitDemoPage extends StatelessWidget {
+  const CubitDemoPage();
 
   @override
   Widget build(BuildContext context) {
-
-    final counterBloc = context.watch<CounterBlocWithEventEnum>();
+    final counterCubit = context.watch<CounterCubit>();
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("UI updates using BLoC pattern"),
+        title: const Text("UI updates using Cubit"),
       ),
       body: Center(
         child: Padding(
@@ -24,18 +23,16 @@ class CounterDisplay extends StatelessWidget {
               IconButton(
                 icon: const Icon(Icons.add),
                 color: Colors.green,
-                onPressed: () =>
-                    counterBloc.add(CounterEventAsEnum.countIncreased),
+                onPressed: () => counterCubit.increment(),
               ),
               Text(
-                "${counterBloc.state}",
-                style: const TextStyle(fontSize: 40),
+                "${counterCubit.state}",
+                style: const TextStyle(fontSize: 50),
               ),
               IconButton(
                 icon: const Icon(Icons.remove),
                 color: Colors.red,
-                onPressed: () =>
-                    counterBloc.add(CounterEventAsEnum.countDecreased),
+                onPressed: () => counterCubit.decrement(),
               ),
             ],
           ),

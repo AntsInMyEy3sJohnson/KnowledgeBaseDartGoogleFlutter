@@ -4,6 +4,8 @@ import 'package:chapter_11_examples/passing_state_with_provider/counter_model.da
 import 'package:chapter_11_examples/passing_state_with_provider/demo_page_using_provider.dart';
 import 'package:chapter_11_examples/persisting_state_with_hydrated_bloc/theme_bloc.dart';
 import 'package:chapter_11_examples/persisting_state_with_hydrated_bloc/theme_chooser.dart';
+import 'package:chapter_11_examples/simple_state_management_with_cubit/counter_cubit.dart';
+import 'package:chapter_11_examples/simple_state_management_with_cubit/cubit_demo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
@@ -42,7 +44,20 @@ class MyApp extends StatelessWidget {
       // home: const ProviderHome(),
       // home: const BlocHome(),
       // home: const BlocWithListenerHome(),
-      home: const ThemeBlocHome(),
+      // home: const ThemeBlocHome(),
+      home: const CounterCubitHome(),
+    );
+  }
+}
+
+class CounterCubitHome extends StatelessWidget {
+  const CounterCubitHome();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<CounterCubit>(
+      create: (_) => CounterCubit(),
+      child: const CubitDemoPage(),
     );
   }
 }
