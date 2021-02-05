@@ -15,6 +15,7 @@ class RouteGenerator2 {
         throw RouteException("No such route: ${routeSettings.name}");
     }
   }
+
 }
 
 class RouteException implements Exception {
