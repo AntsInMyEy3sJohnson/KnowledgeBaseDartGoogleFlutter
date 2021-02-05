@@ -1,9 +1,10 @@
 
-import 'package:chapter_12_examples/routes/home_page.dart';
-import 'package:chapter_12_examples/routes/kitten_page.dart';
+import 'package:chapter_12_examples/basic_routing/routes/home_page.dart';
+import 'package:chapter_12_examples/basic_routing/routes/kitten_page.dart';
 import 'package:flutter/material.dart';
 
-/// Central place for generating and managing routes.
+/// Central place for generating and managing routes. Its main job is to map
+/// route URIs to widgets so the Navigator class can create those routes.
 ///
 /// Keeping this logic in one central place is a nice way to adhere to the SRP.
 class RouteGenerator {

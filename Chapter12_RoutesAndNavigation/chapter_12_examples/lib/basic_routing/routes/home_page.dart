@@ -1,4 +1,4 @@
-import 'package:chapter_12_examples/routes/kitten_page.dart';
+import 'package:chapter_12_examples/basic_routing/routes/kitten_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: RaisedButton(
-                onPressed: () => Navigator.of(context).pushNamed(KittenPage.ROUTE_IDENTIFIER),
+                onPressed: () => Navigator.pushNamed(context, KittenPage.ROUTE_IDENTIFIER),
                 child: const Text("Who doesn't?"),
               ),
             ),
