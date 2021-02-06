@@ -25,7 +25,7 @@ class AppLocalization {
 
 // Extension method to be invoked right on the BuildContext itself
 extension LocalizationExtension on BuildContext {
-  String localize(Keys k) {
+  String localizeManually(Keys k) {
     final localeCode = AppLocalization.of(this).locale.languageCode ?? "en";
     final database = AppLocalization._db;
 

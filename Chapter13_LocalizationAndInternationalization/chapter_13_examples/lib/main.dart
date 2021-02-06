@@ -1,8 +1,9 @@
-import 'package:chapter_13_examples/manual_internationalization/localization/localization_delegate.dart';
+import 'package:chapter_13_examples/internationalization_using_intl/localization/app_localization_2.dart';
+import 'package:chapter_13_examples/internationalization_using_intl/localization/localization_delegate_2.dart';
 import 'package:chapter_13_examples/manual_internationalization/localization/app_localization.dart';
+import 'package:chapter_13_examples/manual_internationalization/localization/localization_delegate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -24,11 +25,53 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ManualLocalizationMaterialApp();
+    // return const ManualLocalizationMaterialApp();
+    return const LocalizationUsingIntelMaterialApp();
+  }
+}
+
+class LocalizationUsingIntelMaterialApp extends StatelessWidget {
+  const LocalizationUsingIntelMaterialApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Using The 'intl' Package",
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      localizationsDelegates: [
+        const AppLocalizationDelegate2(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale.fromSubtags(languageCode: "en"),
+        Locale.fromSubtags(languageCode: "de"),
+      ],
+      home: Scaffold(
+        body: Center(
+          child: const LocalizedText2(),
+        ),
+      ),
+    );
+  }
+}
+
+class LocalizedText2 extends StatelessWidget {
+  const LocalizedText2();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("${context.localizeUsingIntl.helloWorld}");
   }
 }
 
 class ManualLocalizationMaterialApp extends StatelessWidget {
+  const ManualLocalizationMaterialApp();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,7 +92,7 @@ class ManualLocalizationMaterialApp extends StatelessWidget {
       ],
       home: Scaffold(
         body: Center(
-          child: LocalizedText(),
+          child: const LocalizedText(),
         ),
       ),
     );
@@ -60,10 +103,10 @@ class ManualLocalizationMaterialApp extends StatelessWidget {
 // widget tree, below the widget that defines the delegates. Otherwise,
 // the 'AppLocalization.of(context)' will yield null.
 class LocalizedText extends StatelessWidget {
+  const LocalizedText();
 
   @override
   Widget build(BuildContext context) {
-    return Text("${context.localize(Keys.battleship)}");
+    return Text("${context.localizeManually(Keys.battleship)}");
   }
-
 }
