@@ -1,0 +1,25 @@
+{
+  "@@last_modified": "2021-02-06T11:10:17.665221",
+  "remainingCookies": "{cookies,plural, =0{Keine Kekse mehr}=1{Nur noch ein Keks übrig}other{{cookies} Kekse verbleibend}}",
+  "@remainingCookies": {
+    "type": "text",
+    "placeholders": {
+      "cookies": {}
+    }
+  },
+  "hello": "Guten Tag",
+  "@hello": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "helloWorld": "Hallo Welt",
+  "@helloWorld": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "battleship": "Schlachtschiff",
+  "@battleship": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

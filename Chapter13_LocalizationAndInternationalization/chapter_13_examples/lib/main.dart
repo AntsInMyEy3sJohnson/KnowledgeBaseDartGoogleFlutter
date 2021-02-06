@@ -2,6 +2,8 @@ import 'package:chapter_13_examples/internationalization_using_intl/localization
 import 'package:chapter_13_examples/internationalization_using_intl/localization/localization_delegate_2.dart';
 import 'package:chapter_13_examples/manual_internationalization/localization/app_localization.dart';
 import 'package:chapter_13_examples/manual_internationalization/localization/localization_delegate.dart';
+import 'package:chapter_13_examples/plurals_and_data_interpolations/localization/app_localization_3.dart';
+import 'package:chapter_13_examples/plurals_and_data_interpolations/localization/localization_delegate_3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -26,7 +28,97 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // return const ManualLocalizationMaterialApp();
-    return const LocalizationUsingIntelMaterialApp();
+    // return const LocalizationUsingIntelMaterialApp();
+    return const PluralAndDataInterpolationMaterialApp();
+  }
+}
+
+class PluralAndDataInterpolationMaterialApp extends StatelessWidget {
+  const PluralAndDataInterpolationMaterialApp();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "Plural And String Interpolation",
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      localizationsDelegates: [
+        const AppLocalizationDelegate3(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale.fromSubtags(languageCode: "en"),
+        Locale.fromSubtags(languageCode: "de"),
+      ],
+      home: Scaffold(
+        body: Center(
+          child: const CookiesCounter(),
+        ),
+      ),
+    );
+  }
+}
+
+class CookiesCounter extends StatefulWidget {
+  const CookiesCounter();
+
+  @override
+  _CookiesCounterState createState() => _CookiesCounterState();
+}
+
+class _CookiesCounterState extends State<CookiesCounter> {
+
+  int _numCookies = 5;
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text("${context.localizedPlural.remainingCookies(_numCookies)}"),
+          Padding(
+            padding: const EdgeInsets.only(top: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                RaisedButton(
+                    child: const Text("Buy Cookie"),
+                    onPressed: () {
+                      setState(() {
+                        _numCookies = _buyCookie(_numCookies);
+                      });
+                    }),
+                RaisedButton(
+                    child: const Text("Eat Cookie"),
+                    onPressed: () {
+                      setState(() {
+                        _numCookies = _eatCookie(_numCookies);
+                      });
+                    }),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  int _buyCookie(int currentNumCookies) {
+    return currentNumCookies + 1;
+  }
+
+  int _eatCookie(int currentNumCookies) {
+    if (currentNumCookies > 0) {
+      return currentNumCookies - 1;
+    }
+    return currentNumCookies;
   }
 }
 

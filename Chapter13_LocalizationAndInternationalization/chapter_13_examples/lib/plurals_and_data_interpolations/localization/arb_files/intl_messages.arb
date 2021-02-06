@@ -1,0 +1,25 @@
+{
+  "@@last_modified": "2021-02-06T11:10:17.665221",
+  "remainingCookies": "{cookies,plural, =0{No cookies remaining}=1{Only one cookie left}other{{cookies} cookies remaining}}",
+  "@remainingCookies": {
+    "type": "text",
+    "placeholders": {
+      "cookies": {}
+    }
+  },
+  "hello": "Hello",
+  "@hello": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "helloWorld": "Hello world",
+  "@helloWorld": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "battleship": "Battleship",
+  "@battleship": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

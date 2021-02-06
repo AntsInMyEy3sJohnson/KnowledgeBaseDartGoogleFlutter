@@ -34,7 +34,7 @@ import 'dart_files/messages_all.dart';class AppLocalization2 {
   * Among others, this will generate a file called 'messages_all.dart' containing
   * the 'initializeMessages()' method.
   *
-  * */
+  */
   static Future<AppLocalization2> load(Locale locale) async {
     final String localeName = Intl.canonicalizedLocale(locale.languageCode);
 
