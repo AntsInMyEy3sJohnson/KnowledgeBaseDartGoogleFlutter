@@ -71,12 +71,10 @@ class CookiesCounter extends StatefulWidget {
 }
 
 class _CookiesCounterState extends State<CookiesCounter> {
-
   int _numCookies = 5;
 
   @override
   Widget build(BuildContext context) {
-
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -89,19 +87,21 @@ class _CookiesCounterState extends State<CookiesCounter> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 RaisedButton(
-                    child: const Text("Buy Cookie"),
-                    onPressed: () {
-                      setState(() {
-                        _numCookies = _buyCookie(_numCookies);
-                      });
-                    }),
+                  child: const Text("Buy Cookie"),
+                  onPressed: () {
+                    setState(() {
+                      _numCookies = _buyCookie(_numCookies);
+                    });
+                  },
+                ),
                 RaisedButton(
-                    child: const Text("Eat Cookie"),
-                    onPressed: () {
-                      setState(() {
-                        _numCookies = _eatCookie(_numCookies);
-                      });
-                    }),
+                  child: const Text("Eat Cookie"),
+                  onPressed: () {
+                    setState(() {
+                      _numCookies = _eatCookie(_numCookies);
+                    });
+                  },
+                ),
               ],
             ),
           ),
