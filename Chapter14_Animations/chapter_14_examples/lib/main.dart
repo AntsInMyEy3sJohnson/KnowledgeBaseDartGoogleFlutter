@@ -1,3 +1,4 @@
+import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -8,12 +9,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Chapter 14 Examples',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const Text("Examples will go here.")
+      home: const ImplicitAnimationHome(),
     );
+  }
+}
+
+/// Important implicitly animated widgets:
+/// * AnimatedContainer
+/// * AnimatedAlign
+/// * AnimatedOpacity (Relatively expensive in terms of
+/// performance, so use with caution)
+/// * AnimatedDefaultTextStyle
+/// * AnimatedPadding
+/// * AnimatedPhysicalModel
+/// * AnimatedPositioned (only works when inside a stack)
+/// * AnimatedCrossFade
+/// * AnimatedSize
+/// * AnimatedIcon
+class ImplicitAnimationHome extends StatelessWidget {
+  const ImplicitAnimationHome();
+
+  @override
+  Widget build(BuildContext context) {
+    return const AnimatedContainerScaffold();
   }
 }
