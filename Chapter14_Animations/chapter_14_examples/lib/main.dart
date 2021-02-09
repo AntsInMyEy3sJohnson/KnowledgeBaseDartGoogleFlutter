@@ -1,3 +1,4 @@
+import 'package:chapter_14_examples/animation_library/logo_spinner.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,27 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const ImplicitAnimationHome(),
+      home: const AnimationLibraryHome(),
     );
   }
+}
+
+class AnimationLibraryHome extends StatelessWidget {
+
+  const AnimationLibraryHome();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          title: const Text("Animation Library"),
+      ),
+      body: const Center(
+        child: LogoSpinner(),
+      ),
+    );
+  }
+
 }
 
 /// Important implicitly animated widgets:
