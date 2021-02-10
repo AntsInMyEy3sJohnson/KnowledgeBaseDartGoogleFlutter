@@ -1,5 +1,5 @@
 import 'package:chapter_14_examples/animation_library/animatedbutton/button_animator.dart';
-import 'package:chapter_14_examples/animation_library/spinninglogo/logo_spinner.dart';
+import 'package:chapter_14_examples/custom_animations/rotating_container.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -16,20 +16,44 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const AnimationLibraryHome(),
+      // home: const AnimationLibraryHome(),
+      home: const CustomAnimationHome(),
+    );
+  }
+}
+
+// To create complex animations is a matter of mastering the interplay between
+// the following three classes:
+// * AnimationController: Produces values within a preconfigured range with a
+// certain interval in order to animate a widget.
+// * Transform: Alters the aspect of a widget using matrices (scaling, rotation,
+// skew, ...)
+// * Stack: Used to overlap series of children on top one another. Custom positioning
+// by means of the 'Positioned' widget.
+class CustomAnimationHome extends StatelessWidget {
+  const CustomAnimationHome();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Custom Animations"),
+      ),
+      body: const Center(
+        child: const RotatingContainer(),
+      ),
     );
   }
 }
 
 class AnimationLibraryHome extends StatelessWidget {
-
   const AnimationLibraryHome();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text("Animation Library"),
+        title: const Text("Animation Library"),
       ),
       body: const Center(
         // child: LogoSpinner(),
@@ -37,7 +61,6 @@ class AnimationLibraryHome extends StatelessWidget {
       ),
     );
   }
-
 }
 
 /// Important implicitly animated widgets:
