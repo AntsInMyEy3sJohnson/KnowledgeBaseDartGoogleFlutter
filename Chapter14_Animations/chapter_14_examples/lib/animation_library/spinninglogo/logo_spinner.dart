@@ -1,4 +1,4 @@
-import 'package:chapter_14_examples/animation_library/rotating_logo.dart';
+import 'package:chapter_14_examples/animation_library/spinninglogo/rotating_logo.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 

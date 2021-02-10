@@ -1,4 +1,5 @@
-import 'package:chapter_14_examples/animation_library/logo_spinner.dart';
+import 'package:chapter_14_examples/animation_library/animatedbutton/button_animator.dart';
+import 'package:chapter_14_examples/animation_library/spinninglogo/logo_spinner.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,8 @@ class AnimationLibraryHome extends StatelessWidget {
           title: const Text("Animation Library"),
       ),
       body: const Center(
-        child: LogoSpinner(),
+        // child: LogoSpinner(),
+        child: ButtonAnimator(),
       ),
     );
   }
