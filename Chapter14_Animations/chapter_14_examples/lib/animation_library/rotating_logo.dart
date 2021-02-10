@@ -63,3 +63,29 @@ class RotatingLogoWithAnimatedBuilder extends StatelessWidget {
     );
   }
 }
+
+class RotatingLogoWithAnimatedBuilderAndTween extends StatelessWidget {
+  final Animation _animation;
+
+  const RotatingLogoWithAnimatedBuilderAndTween({Animation animation})
+      : this._animation = animation;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) {
+        return Transform.rotate(
+          // We can directly use the animation's value here -- the tween
+          // passed in by the caller already makes sure those values range
+          // from 0 to 2 * PI.
+          angle: _animation.value,
+          child: child,
+        );
+      },
+      child: FlutterLogo(
+        size: 70,
+      ),
+    );
+  }
+}

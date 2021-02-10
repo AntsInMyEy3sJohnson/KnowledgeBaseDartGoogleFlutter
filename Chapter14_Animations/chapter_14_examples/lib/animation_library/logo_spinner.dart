@@ -1,5 +1,6 @@
 import 'package:chapter_14_examples/animation_library/rotating_logo.dart';
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class LogoSpinner extends StatefulWidget {
   const LogoSpinner();
@@ -22,12 +23,14 @@ class _LogoSpinnerState extends State<LogoSpinner>
   // visible -- performance drop ahead
   AnimationController _animationController;
   CurvedAnimation _curvedAnimation;
+  Animation<double> _tweenAnimation;
 
   @override
   Widget build(BuildContext context) {
     // return RotatingLogoWithAnimatedBuilder(
     //     animationController: _animationController);
-    return RotatingLogoWithAnimatedBuilder(animation: _curvedAnimation);
+    // return RotatingLogoWithAnimatedBuilder(animation: _curvedAnimation);
+    return RotatingLogoWithAnimatedBuilderAndTween(animation: _tweenAnimation);
   }
 
   // Always make sure to properly initialize and dispose when not needed anymore!
@@ -52,6 +55,11 @@ class _LogoSpinnerState extends State<LogoSpinner>
       parent: _animationController,
       curve: Curves.bounceIn,
     );
+    _tweenAnimation = Tween<double>(
+      begin: 0,
+      end: 2 * math.pi,
+    ).animate(_curvedAnimation); // This works with both the AnimationController
+    // and the CurvedAnimation -- and everything else that's a subtype of 'Animation'
   }
 
   @override
