@@ -1,8 +1,40 @@
 import 'package:chapter_14_examples/animation_library/animatedbutton/button_animator.dart';
-import 'package:chapter_14_examples/custom_animations/rotating_container.dart';
+import 'package:chapter_14_examples/custom_animations/moving_button/moving_button.dart';
+import 'package:chapter_14_examples/custom_animations/rotating_container/rotating_container.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
+/// Some best practices when working with animations:
+///
+/// Use implicit animation wherever possible
+/// * Counterparts of non-animated Flutter widgets, such as 'AnimatedContainer',
+/// 'AnimatedAlign', 'AnimatedOpacity', and so on
+/// * Easy to set up and use, but not as flexible as AnimatedBuilder
+/// * Apart from being animated, the implicit animation widgets work in exactly
+/// the same way as their non-animated counterparts
+///
+/// If a widget to be used does not have an implicit animation counterpart,
+/// go for AnimatedBuilder -- using AnimatedWidget directly is possible, too,
+/// but requires more boilerplate code
+///
+/// Optimize animations as inefficient animation use can lead to frame rate drops
+/// in the app
+/// * Make use of 'const' constructors as often as possible in order to avoid
+/// unnecessary rebuilds
+/// * If a 'const' constructor is not an option, try to cache the widget sub tree
+/// in question within a 'final' variable or put it inside an AnimatedBuilder (which
+/// does precisely that)
+///
+/// AnimationController's default behavior of emitting values between 0.0 and 1.0
+/// can be altered or enriched
+/// * Use 'CurvedAnimation', 'ReverseAnimation' and the likes to put additional
+/// behavior on top of a plain AnimationController
+/// * Use 'Tween<T>' to make the AnimationController emit different kinds of
+/// values altogether
+///
+/// The world of custom animations is vast and complex, but there is no need to
+/// know all of it -- most animations needs can nicely be covered using only
+/// three classes: AnimationController, Stack, Transform
 void main() {
   runApp(MyApp());
 }
@@ -40,7 +72,8 @@ class CustomAnimationHome extends StatelessWidget {
         title: const Text("Custom Animations"),
       ),
       body: const Center(
-        child: const RotatingContainer(),
+        // child: const RotatingContainer(),
+        child: const MovingButton(),
       ),
     );
   }
