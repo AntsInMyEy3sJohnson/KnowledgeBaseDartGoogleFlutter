@@ -1,6 +1,8 @@
 import 'package:chapter_14_examples/animation_library/animatedbutton/button_animator.dart';
 import 'package:chapter_14_examples/custom_animations/moving_button/moving_button.dart';
 import 'package:chapter_14_examples/custom_animations/rotating_container/rotating_container.dart';
+import 'package:chapter_14_examples/hero_animations/route_generator.dart';
+import 'package:chapter_14_examples/hero_animations/starting_route.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +38,21 @@ import 'package:flutter/material.dart';
 /// know all of it -- most animations needs can nicely be covered using only
 /// three classes: AnimationController, Stack, Transform
 void main() {
-  runApp(MyApp());
+  // runApp(MyApp());
+  runApp(MyAppWithHeroNavigationRoutes());
+}
+
+class MyAppWithHeroNavigationRoutes extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      onGenerateTitle: (context) => "Hero Animations",
+      initialRoute: StartingRoute.ROUTE_NAME,
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
+  }
+
+
 }
 
 class MyApp extends StatelessWidget {

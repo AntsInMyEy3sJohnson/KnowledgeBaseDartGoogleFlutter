@@ -12,12 +12,16 @@ class StartingRoute extends StatelessWidget {
     // The Hero widget itself does not have an 'onTap' callback,
     // so wrap within GestureDetector
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed(TargetRoute.ROUTE_NAME),
+      onTap: () => Navigator.pushNamed(context, TargetRoute.ROUTE_NAME),
       child: Container(
         child: Hero(
-          tag: 'FlutterLogo',
-          child: SvgPicture.asset("assets/flutter_logo.svg"),
-        ),
+            tag: 'FlutterLogo',
+            // Could also wrap clips!
+            child: SvgPicture.asset(
+              "assets/coffee_mug.svg",
+              width: 100,
+              height: 100,
+            )),
       ),
     );
   }
