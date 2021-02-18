@@ -1,6 +1,6 @@
-import 'package:chapter_14_examples/custom_route_transitions/sliding_page_route.dart';
+import 'package:chapter_14_examples/custom_route_transitions/route_transitions.dart';
 import 'package:chapter_14_examples/custom_route_transitions/starting_route_2.dart';
-import 'package:chapter_14_examples/custom_route_transitions/target_route_2.dart';
+import 'package:chapter_14_examples/custom_route_transitions/target_routes.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator2 {
@@ -13,11 +13,23 @@ class RouteGenerator2 {
         return MaterialPageRoute(
             builder: (_) =>
                 withScaffold(const StartingRoute2(), routeSettings.name));
-      case TargetRoute2.ROUTE_NAME:
-        // Custom transition
+      case SlidingAnimationRoute.ROUTE_NAME:
+        // Sliding transition
         return SlidingPageRoute(
+            targetWidget: withScaffold(
+                const SlidingAnimationRoute(), routeSettings.name));
+      case ScalingAnimationRoute.ROUTE_NAME:
+        return ScalingPageRoute(
+            targetWidget: withScaffold(
+                const ScalingAnimationRoute(), routeSettings.name));
+      case RotatingAnimationRoute.ROUTE_NAME:
+        return RotatingPageRoute(
+            targetWidget: withScaffold(
+                const RotatingAnimationRoute(), routeSettings.name));
+      case FadingAnimationRoute.ROUTE_NAME:
+        return FadingPageRoute(
             targetWidget:
-                withScaffold(const TargetRoute2(), routeSettings.name));
+                withScaffold(const FadingAnimationRoute(), routeSettings.name));
       default:
         throw RouteException("No such route: ${routeSettings.name}");
     }
