@@ -1,6 +1,8 @@
 import 'package:chapter_14_examples/animation_library/animatedbutton/button_animator.dart';
 import 'package:chapter_14_examples/custom_animations/moving_button/moving_button.dart';
 import 'package:chapter_14_examples/custom_animations/rotating_container/rotating_container.dart';
+import 'package:chapter_14_examples/custom_route_transitions/route_generator_2.dart';
+import 'package:chapter_14_examples/custom_route_transitions/starting_route_2.dart';
 import 'package:chapter_14_examples/hero_animations/route_generator.dart';
 import 'package:chapter_14_examples/hero_animations/starting_route.dart';
 import 'package:chapter_14_examples/implicit_animations/animated_container_scaffold.dart';
@@ -38,11 +40,30 @@ import 'package:flutter/material.dart';
 /// know all of it -- most animations needs can nicely be covered using only
 /// three classes: AnimationController, Stack, Transform
 void main() {
-  // runApp(MyApp());
-  runApp(MyAppWithHeroNavigationRoutes());
+  // runApp(const MyApp());
+  // runApp(const MyAppWithHeroNavigationRoutes());
+  runApp(const MyAppWithCustomRouteTransitions());
+}
+
+class MyAppWithCustomRouteTransitions extends StatelessWidget {
+
+  const MyAppWithCustomRouteTransitions();
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      onGenerateTitle: (context) => "Custom route transitions",
+      initialRoute: StartingRoute2.ROUTE_NAME,
+      onGenerateRoute: RouteGenerator2.generateRoute,
+    );
+  }
+
 }
 
 class MyAppWithHeroNavigationRoutes extends StatelessWidget {
+
+  const MyAppWithHeroNavigationRoutes();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -52,10 +73,12 @@ class MyAppWithHeroNavigationRoutes extends StatelessWidget {
     );
   }
 
-
 }
 
 class MyApp extends StatelessWidget {
+
+  const MyApp();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
