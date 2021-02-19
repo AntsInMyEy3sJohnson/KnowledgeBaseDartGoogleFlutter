@@ -2,6 +2,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 // Code generator will create this file for us. Because of 'part', we can access
 // private members in this file from the class below.
+// The Dart documentation discourages the use of the 'part' keyword. The only case
+// where it can reasonably be used is as a means to support code generation.
 part 'animal.g.dart';
 
 // Tells the code generator that JSON serialization code needs to be generated for
