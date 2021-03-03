@@ -1,4 +1,5 @@
 import 'package:chapter_16_examples/testing_widgets/person.dart';
+import 'package:chapter_16_examples/testing_widgets/widget_test_home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,19 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const WidgetTestHome(),
-    );
-  }
-}
-
-class WidgetTestHome extends StatelessWidget {
-  const WidgetTestHome();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Person(27, "John", "Doe"),
+      home: Scaffold(
+        body: const WidgetTestHome("Jane", "Doe", 28),
       ),
     );
   }

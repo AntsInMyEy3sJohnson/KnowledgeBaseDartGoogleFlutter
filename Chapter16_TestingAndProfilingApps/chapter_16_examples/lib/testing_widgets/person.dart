@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Person extends StatelessWidget {
-  final int age;
   final String firstName;
   final String lastName;
+  final int age;
 
-  Person(this.age, this.firstName, this.lastName);
+  const Person(this.firstName, this.lastName, this.age);
 
   @override
   Widget build(BuildContext context) {
