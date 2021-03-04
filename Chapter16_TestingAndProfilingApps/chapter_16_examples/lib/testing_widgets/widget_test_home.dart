@@ -20,3 +20,24 @@ class WidgetTestHome extends StatelessWidget {
     );
   }
 }
+
+class WidgetTestHome2 extends StatelessWidget {
+
+  final Icon iconToDisplay;
+
+  const WidgetTestHome2(this.iconToDisplay);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Directionality(
+        textDirection: TextDirection.ltr,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: iconToDisplay,
+        ),
+      ),
+    );
+  }
+
+}
