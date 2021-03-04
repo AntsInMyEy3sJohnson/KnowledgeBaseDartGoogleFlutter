@@ -1,5 +1,4 @@
-import 'package:chapter_16_examples/testing_widgets/person.dart';
-import 'package:chapter_16_examples/testing_widgets/widget_test_home.dart';
+import 'package:chapter_16_examples/testing_widgets/widget_with_counter_bloc.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +15,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        body: const WidgetTestHome("Jane", "Doe", 28),
+        // body: const WidgetTest("Jane", "Doe", 28),
+        body: const WidgetWithCounterBlocHome(),
       ),
     );
   }

@@ -1,4 +1,4 @@
-import 'package:chapter_16_examples/testing_widgets/widget_test_home.dart';
+import 'package:chapter_16_examples/testing_widgets/widget_test_classes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,7 +13,10 @@ void main() {
     // Builds and renders a widget in a testing environment.
     // Equivalent of inserting a 'Person' widget into the widget tree of
     // an app and invoking 'build()' to render it.
-    await widgetTester.pumpWidget(WidgetTestHome(firstName, lastName, age));
+    await widgetTester.pumpWidget(Directionality(
+      textDirection: TextDirection.ltr,
+      child: WidgetTest(firstName, lastName, age),
+    ));
 
     // Calling 'text()' will try to find a 'Text' widget containing a
     // string that is equal to the given string.
@@ -30,7 +33,10 @@ void main() {
       (WidgetTester widgetTester) async {
     final wantedIcon = Icon(Icons.check);
 
-    await widgetTester.pumpWidget(WidgetTestHome2(wantedIcon));
+    await widgetTester.pumpWidget(Directionality(
+      textDirection: TextDirection.ltr,
+      child: WidgetTest2(wantedIcon),
+    ));
     // Triggers a rebuild after 100 milliseconds
     await widgetTester.pump(Duration(milliseconds: 100));
 
@@ -44,6 +50,5 @@ void main() {
 
     expect(iconFinder, findsOneWidget);
     expect(widgetTypeFinder, findsWidgets);
-
   });
 }
