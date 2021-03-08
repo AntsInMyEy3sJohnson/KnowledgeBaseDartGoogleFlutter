@@ -1,3 +1,4 @@
+import 'package:chapter_16_examples/integration_testing/simple_counter.dart';
 import 'package:chapter_16_examples/testing_widgets/widget_with_counter_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         // body: const WidgetTest("Jane", "Doe", 28),
-        body: const WidgetWithCounterBlocHome(),
+        // body: const WidgetWithCounterBlocHome(),
+        body: const SimpleCounterScaffold()
       ),
     );
   }
