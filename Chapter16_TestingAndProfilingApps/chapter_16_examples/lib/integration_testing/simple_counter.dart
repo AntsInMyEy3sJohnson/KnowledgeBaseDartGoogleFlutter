@@ -24,7 +24,6 @@ class _SimpleCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final counterBloc = context.watch<CounterBloc2>();
 
     return Center(
@@ -35,18 +34,21 @@ class _SimpleCounter extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
+              key: Key("counterIncrementButton"),
               icon: const Icon(Icons.add),
               color: Colors.green,
-              onPressed: () => counterBloc.add(CounterEvent.increase),
+              onPressed: () => counterBloc.add(CounterEvent.increment),
             ),
             Text(
               "${counterBloc.state}",
+              key: Key("counterStateText"),
               style: const TextStyle(fontSize: 35),
             ),
             IconButton(
+              key: Key("counterDecrementButton"),
               icon: const Icon(Icons.remove),
               color: Colors.red,
-              onPressed: () => counterBloc.add(CounterEvent.decrease),
+              onPressed: () => counterBloc.add(CounterEvent.decrement),
             ),
           ],
         ),
