@@ -1,19 +1,19 @@
 import 'package:chapter_17_examples/http_get_requests/data/item.dart';
-import 'package:chapter_17_examples/http_get_requests/http_request.dart';
+import 'package:chapter_17_examples/commons/http_request.dart';
 import 'package:chapter_17_examples/http_get_requests/widgets/http_request_error_widget.dart';
 import 'package:chapter_17_examples/http_get_requests/widgets/http_request_successful_widget.dart';
 import 'package:flutter/material.dart';
 
-class HttpWidget extends StatefulWidget {
-  final HttpRequest<Item> _httpRequest;
+class GetRequestPage extends StatefulWidget {
+  final SimpleGetRequest<Item> _httpRequest;
 
-  const HttpWidget(this._httpRequest);
+  const GetRequestPage(this._httpRequest);
 
   @override
-  State<StatefulWidget> createState() => _HttpWidgetState();
+  State<StatefulWidget> createState() => _GetRequestPageState();
 }
 
-class _HttpWidgetState extends State<HttpWidget> {
+class _GetRequestPageState extends State<GetRequestPage> {
   Future<Item> _itemsFuture;
 
   @override

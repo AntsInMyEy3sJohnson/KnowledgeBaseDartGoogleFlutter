@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-import 'package:chapter_17_examples/http_get_requests/http_request.dart';
+import 'package:chapter_17_examples/commons/http_request.dart';
 import 'package:http/http.dart' as http;
 
 import 'data/item.dart';
 
-class ItemHttpRequest implements HttpRequest<Item> {
+class ItemHttpRequest implements SimpleGetRequest<Item> {
   final String url;
 
   const ItemHttpRequest({this.url});

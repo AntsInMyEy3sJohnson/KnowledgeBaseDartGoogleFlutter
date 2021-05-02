@@ -1,6 +1,12 @@
-abstract class HttpRequest<T> {
+abstract class SimpleGetRequest<T> {
 
   Future<T> perform();
+
+}
+
+abstract class SimplePostRequest<T> {
+
+  Future<T> perform(String body);
 
 }
 
