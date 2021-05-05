@@ -1,13 +1,57 @@
+import 'package:chapter_17_examples/file_download/download_screen.dart';
+import 'package:chapter_17_examples/file_download/file_downloader.dart';
 import 'package:chapter_17_examples/http_get_requests/item_http_request.dart';
 import 'package:chapter_17_examples/http_get_requests/widgets/request_page.dart';
 import 'package:chapter_17_examples/http_post_requests/routes.dart';
 import 'package:chapter_17_examples/http_post_requests/routes/post_request_page.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  _dioStuff();
-  runApp(MyApp());
+  // _dioStuff();
+  // runApp(MyApp());
+  runApp(MyDownloadApp());
+}
+
+class MyDownloadApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<FileDownloader>(
+        create: (_) => FileDownloader(),
+        child: MaterialApp(
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Text("Download demo"),
+            ),
+            body: Center(
+              child: const DownloadScreen(),
+            ),
+          )
+        ),
+    );
+  }
+
+
+
+}
+
+class MyApp extends StatelessWidget {
+  static const _url = "https://jsonplaceholder.typicode.com/posts/42";
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'HTTP Requests',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      onGenerateTitle: (_) => "HTTP Requests",
+      initialRoute: PostRequestPage.ROUTE_ID,
+      onGenerateRoute: RouteGenerator.generateRoute,
+    );
+  }
 }
 
 void _dioStuff() async {
@@ -16,7 +60,7 @@ void _dioStuff() async {
 
   try {
     final response1 =
-        await dio.get<String>("https://jsonplaceholder.typicode.com/posts/42");
+    await dio.get<String>("https://jsonplaceholder.typicode.com/posts/42");
     print("${response1.data}");
 
     // Note the simple handling of the JSON body to be POSTed
@@ -49,23 +93,5 @@ void _dioStuff() async {
 
   } on DioError catch (e) {
     print(e);
-  }
-}
-
-class MyApp extends StatelessWidget {
-  static const _url = "https://jsonplaceholder.typicode.com/posts/42";
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'HTTP Requests',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      onGenerateTitle: (_) => "HTTP Requests",
-      initialRoute: PostRequestPage.ROUTE_ID,
-      onGenerateRoute: RouteGenerator.generateRoute,
-    );
   }
 }
