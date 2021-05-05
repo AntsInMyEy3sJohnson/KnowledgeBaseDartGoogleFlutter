@@ -6,6 +6,7 @@ import 'package:chapter_17_examples/http_post_requests/routes.dart';
 import 'package:chapter_17_examples/http_post_requests/routes/post_request_page.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -18,22 +19,18 @@ class MyDownloadApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<FileDownloader>(
-        create: (_) => FileDownloader(),
-        child: MaterialApp(
+      create: (_) => FileDownloader(),
+      child: MaterialApp(
           home: Scaffold(
-            appBar: AppBar(
-              title: const Text("Download demo"),
-            ),
-            body: Center(
-              child: const DownloadScreen(),
-            ),
-          )
+        appBar: AppBar(
+          title: const Text("Download demo"),
         ),
+        body: Center(
+          child: const DownloadScreen(),
+        ),
+      )),
     );
   }
-
-
-
 }
 
 class MyApp extends StatelessWidget {
@@ -54,13 +51,49 @@ class MyApp extends StatelessWidget {
   }
 }
 
+void _dioStuffForUploadingData() async {
+  final fileDir = await getTemporaryDirectory();
+  final filePath1 = "$fileDir/someFile.txt";
+  final filePath2 = "$fileDir/anotherFile.jpeg";
+
+  // Assemble payload
+  final singleFilePayload = FormData.fromMap({
+    "someFormKey": "someFormValue",
+    "file": await MultipartFile.fromFile(filePath1),
+  });
+
+  // This would be the call to upload the data -- not actually invoked here
+  // await Dio().post("https://some-url.com/some-endpoint", data: payload);
+
+  // The same approach can be used to upload multiple files, too
+  final multiFilePayload = FormData.fromMap({
+    "someOtherFormKey": "someValue",
+    "moreFiles": [
+      await MultipartFile.fromFile(filePath1),
+      await MultipartFile.fromFile(filePath2),
+    ]
+  });
+
+  // To change the encoding from the default ("multipart/from-data") to some
+  // other value, the 'Options' object can be used in the request:
+  /*await Dio().post(
+    "https://example.org/endpoint",
+    data: multiFilePayload,
+    options: Options(
+      contentType: Headers.formUrlEncodedContentType,
+    ),
+  );*/
+  
+
+}
+
 void _dioStuff() async {
   /* Dio stuff -- preparation for sample app that downloads and stores a file */
   final dio = Dio();
 
   try {
     final response1 =
-    await dio.get<String>("https://jsonplaceholder.typicode.com/posts/42");
+        await dio.get<String>("https://jsonplaceholder.typicode.com/posts/42");
     print("${response1.data}");
 
     // Note the simple handling of the JSON body to be POSTed
@@ -90,7 +123,6 @@ void _dioStuff() async {
             "Foo": "Bar",
           }))
     ]);
-
   } on DioError catch (e) {
     print(e);
   }
