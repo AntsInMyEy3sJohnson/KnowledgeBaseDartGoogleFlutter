@@ -12,6 +12,9 @@ class DownloadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Consumer<FileDownloader>(
+        // For listening to upload or download progress, rely on a state management
+        // library like 'provider' or 'flutter_bloc' as often as possible -- avoid
+        // using 'setState()'
         builder: (context, status, _) {
           final downloadProgress = status.downloadProgress.toStringAsFixed(1);
           return ElevatedButton(

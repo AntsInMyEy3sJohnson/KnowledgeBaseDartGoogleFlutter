@@ -71,6 +71,15 @@ void _dioStuffForUploadingData() async {
     "moreFiles": [
       await MultipartFile.fromFile(filePath1),
       await MultipartFile.fromFile(filePath2),
+      // Further useful methods:
+      // MultipartFile.fromBytes()
+      // MultipartFile.fromFile()
+      // MultipartFile.fromString()
+
+      // Dio even has interceptors -- they are akin to event listeners in that
+      // they can be run every time a certain action is performed
+      // Interceptors can, for example, be used to implement retries
+      // in case of a download that has failed
     ]
   });
 
@@ -83,7 +92,7 @@ void _dioStuffForUploadingData() async {
       contentType: Headers.formUrlEncodedContentType,
     ),
   );*/
-  
+
 
 }
 
