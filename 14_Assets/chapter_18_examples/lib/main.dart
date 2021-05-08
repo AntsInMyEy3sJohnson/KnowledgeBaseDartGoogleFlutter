@@ -1,8 +1,8 @@
 import 'package:chapter_18_examples/working_with_images/local_asset_icon_viewer.dart';
+import 'package:chapter_18_examples/working_with_images/network_asset_icon_viewer.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-
   // Any Flutter app exposes a so-called 'rootBundle' object that enables
   // developers to quickly and easily load assets. The 'rootBundle' object
   // should not be used inside widgets (regardless if the widget is a
@@ -44,8 +44,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: const LocalAssetIconViewer(),
-      )
+        // body: const LocalAssetIconViewer(),
+        body: const NetworkAssetIconViewer(
+            "https://nicokrieg.com/assets/img/MonolithicHell.jpg"),
+      ),
     );
   }
 }
