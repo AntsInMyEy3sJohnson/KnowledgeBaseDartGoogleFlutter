@@ -1,6 +1,8 @@
 import 'package:chapter_18_examples/working_with_images/cached_network_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/local_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/network_asset_icon_viewer.dart';
+import 'package:chapter_18_examples/working_with_svg_files/downloader_with_error_handling/web_svg_icon_viewer.dart';
+import 'package:chapter_18_examples/working_with_svg_files/local_svg_icon_viewer.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -33,6 +35,18 @@ void main() {
   // try to place them in shared preferences or in some database shipped with the app,
   // or query them from a web service.
 
+  // In most cases, SVG files should be used instead of images in a "static" format
+  // like PNG. Not only is an SVG file usually smaller in size than its PNG
+  // counterpart, but -- more importantly -- it will always be rendered in good
+  // quality since SVG images are based on the definition of shapes, fills, and paths
+  // rather than a well-defined matrix of colors fixed in size.
+  // Because SVG images will render in great quality regardless of the space they
+  // take up on screen, only one SVG file is required (compare this to the variants
+  // of PNG files necessary to display the image in appropriate quality depending on
+  // the available space).
+  // Nonetheless, if the image content is very complex and the image has to preserve
+  // transparency, PNG is still the better choice.
+
   runApp(MyApp());
 }
 
@@ -50,7 +64,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         // body: const LocalAssetIconViewer(),
         // body: const NetworkAssetIconViewer(_url),
-        body: const CachedNetworkAssetIconViewer(_url),
+        // body: const CachedNetworkAssetIconViewer(_url),
+        // body: const LocalSvgIconViewer(),
+        body: const WebSvgIconViewer(),
       ),
     );
   }
