@@ -1,3 +1,4 @@
+import 'package:chapter_17_examples/advanced_rest_calls/item_downloader.dart';
 import 'package:chapter_17_examples/file_download/download_screen.dart';
 import 'package:chapter_17_examples/file_download/file_downloader.dart';
 import 'package:chapter_17_examples/http_get_requests/item_http_request.dart';
@@ -12,7 +13,24 @@ import 'package:provider/provider.dart';
 void main() {
   // _dioStuff();
   // runApp(MyApp());
-  runApp(MyDownloadApp());
+  // runApp(MyDownloadApp());
+  runApp(MyTodoApp());
+}
+
+class MyTodoApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Awesome todo app"),
+        ),
+        body: Center(
+          child: ItemDownloader(),
+        ),
+      ),
+    );
+  }
 }
 
 class MyDownloadApp extends StatelessWidget {
@@ -21,14 +39,15 @@ class MyDownloadApp extends StatelessWidget {
     return ChangeNotifierProvider<FileDownloader>(
       create: (_) => FileDownloader(),
       child: MaterialApp(
-          home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Download demo"),
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text("Download demo"),
+          ),
+          body: Center(
+            child: const DownloadScreen(),
+          ),
         ),
-        body: Center(
-          child: const DownloadScreen(),
-        ),
-      )),
+      ),
     );
   }
 }
@@ -92,8 +111,6 @@ void _dioStuffForUploadingData() async {
       contentType: Headers.formUrlEncodedContentType,
     ),
   );*/
-
-
 }
 
 void _dioStuff() async {
