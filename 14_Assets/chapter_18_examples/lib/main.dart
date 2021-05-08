@@ -1,3 +1,4 @@
+import 'package:chapter_18_examples/working_with_images/cached_network_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/local_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/network_asset_icon_viewer.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,9 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  static const String _url = "https://nicokrieg.com/assets/img/MonolithicHell.jpg";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,8 +49,8 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         // body: const LocalAssetIconViewer(),
-        body: const NetworkAssetIconViewer(
-            "https://nicokrieg.com/assets/img/MonolithicHell.jpg"),
+        // body: const NetworkAssetIconViewer(_url),
+        body: const CachedNetworkAssetIconViewer(_url),
       ),
     );
   }
