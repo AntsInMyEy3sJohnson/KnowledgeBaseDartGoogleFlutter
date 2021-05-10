@@ -1,13 +1,18 @@
+import 'package:chapter_18_examples/video/video_player.dart';
+import 'package:chapter_18_examples/video/volume_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:provider/provider.dart';
+import 'package:video_player/video_player.dart' as flutterVideo;
 
 class VideoLoader extends StatefulWidget {
+  const VideoLoader();
+
   @override
   State<StatefulWidget> createState() => _VideoLoaderState();
 }
 
 class _VideoLoaderState extends State<VideoLoader> {
-  VideoPlayerController _videoPlayerController;
+  flutterVideo.VideoPlayerController _videoPlayerController;
   Future<void> _initVideoFuture;
 
   @override
@@ -16,8 +21,8 @@ class _VideoLoaderState extends State<VideoLoader> {
 
     // 'asset()' is not the only named constructor available -- there is also
     // 'file()' and 'network()
-    _videoPlayerController =
-        VideoPlayerController.asset("assets/videos/mysamplevideo.mov");
+    _videoPlayerController = flutterVideo.VideoPlayerController.asset(
+        "assets/videos/mysamplevideo.mov");
     _videoPlayerController.setLooping(false);
 
     _initVideoFuture = _videoPlayerController.initialize();
@@ -35,7 +40,10 @@ class _VideoLoaderState extends State<VideoLoader> {
         if (ConnectionState.done == snapshot.connectionState) {
           // Once the VideoPlayerController has initialized the video, the Future
           // state will be 'done', and the video will be ready for playback
-          return const Text("Implement me");
+          return ChangeNotifierProvider<VolumeManager>(
+            create: (_) => VolumeManager(),
+            child: VideoPlayer(_videoPlayerController),
+          );
         }
 
         return const Center(
