@@ -1,3 +1,4 @@
+import 'package:chapter_19_examples/forms_and_validation/layout.dart';
 import 'package:chapter_19_examples/forms_and_validation/login_form.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        body: LoginForm(),
-      )
+        body: const Layout(),
+      ),
     );
   }
 }

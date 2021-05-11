@@ -25,7 +25,7 @@ class Validators {
     }
     
     if (password.length < 8) {
-      return "Password must contain at least eight characters";
+      return "Must contain at least 8 characters";
     }
     
     return null;
