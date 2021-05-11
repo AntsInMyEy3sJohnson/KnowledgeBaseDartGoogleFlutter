@@ -1,3 +1,4 @@
+import 'package:chapter_18_examples/music_playback/music_player.dart';
 import 'package:chapter_18_examples/video_playback//video_loader.dart';
 import 'package:chapter_18_examples/working_with_images/cached_network_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/local_asset_icon_viewer.dart';
@@ -68,7 +69,8 @@ class MyApp extends StatelessWidget {
         // body: const CachedNetworkAssetIconViewer(_url),
         // body: const LocalSvgIconViewer(),
         // body: const WebSvgIconViewer(),
-        body: const VideoLoader(),
+        // body: const VideoLoader(),
+        body: const MusicPlayer(),
       ),
     );
   }

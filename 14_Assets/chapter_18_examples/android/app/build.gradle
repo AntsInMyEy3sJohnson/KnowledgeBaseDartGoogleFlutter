@@ -35,7 +35,9 @@ android {
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.example.chapter_18_examples"
-        minSdkVersion 16
+        // Increase minimum SDK version -- multidex does not support version 16 (Android Jelly Bean) out of the box
+        // See: https://stackoverflow.com/questions/55591958/flutter-firestore-causing-d8-cannot-fit-requested-classes-in-a-single-dex-file
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

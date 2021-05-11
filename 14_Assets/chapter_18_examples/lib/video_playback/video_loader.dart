@@ -1,5 +1,5 @@
-import 'package:chapter_18_examples/video/video_player.dart';
-import 'package:chapter_18_examples/video/volume_manager.dart';
+import 'package:chapter_18_examples/video_playback/video_player.dart';
+import 'package:chapter_18_examples/video_playback//volume_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:video_player/video_player.dart' as flutterVideo;
