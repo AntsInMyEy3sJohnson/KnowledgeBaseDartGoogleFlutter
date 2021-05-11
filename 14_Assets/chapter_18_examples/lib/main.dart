@@ -1,4 +1,4 @@
-import 'package:chapter_18_examples/video/video_loader.dart';
+import 'package:chapter_18_examples/video_playback//video_loader.dart';
 import 'package:chapter_18_examples/working_with_images/cached_network_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/local_asset_icon_viewer.dart';
 import 'package:chapter_18_examples/working_with_images/network_asset_icon_viewer.dart';
