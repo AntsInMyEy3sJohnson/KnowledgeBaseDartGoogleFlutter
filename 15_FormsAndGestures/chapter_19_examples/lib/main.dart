@@ -1,3 +1,4 @@
+import 'package:chapter_19_examples/forms_and_validation/login_form.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Text("Sample code will go here."),
+      home: Scaffold(
+        body: LoginForm(),
+      )
     );
   }
 }
