@@ -11,7 +11,7 @@ class Layout extends StatelessWidget {
         // By relying on the dimensions property, the aspect ratio will be
         // consistent regardless of the available space and the device's
         // orientation
-        final width = dimensions.maxWidth / 1.5;
+        final width = dimensions.maxWidth / 1.2;
         final height = dimensions.maxHeight / 3;
 
         return Center(
@@ -41,7 +41,7 @@ class Layout extends StatelessWidget {
           maxWidth: width,
           maxHeight: height,
         ),
-        child: LoginForm(),
+        child: const LoginForm(),
       ),
     );
   }
@@ -52,7 +52,7 @@ class Layout extends StatelessWidget {
     return SizedBox(
       width: width,
       height: height,
-      child: LoginForm(),
+      child: const LoginForm(),
     );
   }
 }
