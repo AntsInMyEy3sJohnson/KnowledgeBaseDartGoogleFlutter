@@ -70,7 +70,7 @@ void main() {
   // Set 'ListView.shrinkWrap' to 'true': Makes the contained list occupy only the
   // space it needs. Therefore, since the height can be calculated based on the list's
   // children, it becomes well-defined rather than infinite
-  // Generally, 'Expanded' is the most convenient option, but generally speaking, a
+  // Most often, 'Expanded' is the most convenient option, but generally speaking, a
   // list -- or any widget with a, by default, infinite height (or width, in case of
   // a Row) -- can be put inside any widget providing a well-defined height, such as
   // 'SizedBox' and 'Container'.

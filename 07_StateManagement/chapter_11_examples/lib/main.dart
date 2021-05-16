@@ -14,10 +14,10 @@ import 'package:provider/provider.dart';
 
 // Short summary of best practices about state management...
 // ... using Provider
-// * Use 'Consumer<T>' wherever possible because it enabled rebuilding only the
+// * Use 'Consumer<T>' wherever possible because it enables rebuilding only the
 // widgets that actually require a rebuild.
 // * 'Provider.of<T>(context)' should be avoided inside 'build()' methods as it will
-// all of the widget's children, even those that don't need to be rebuilt.
+// rebuild all of the widget's children, even those that don't need to be rebuilt.
 // * Making use of 'MultiProvider' is a good means to make code more readable in
 // case multiple providers are to be used within and below the same widget.
 // * Prefer using extensions methods introduced by Provider to the 'BuildContext'
@@ -112,7 +112,7 @@ class BlocWithListenerHome extends StatelessWidget {
 // state changes, one will be better of using a 'BlocConsumer'. In all other cases,
 // making use of 'BlocBuilder' and 'BlocListener' is absolutely fine.
 // * The content of a bloc's child should be moved to a separate widget so there's
-// a change to initialize the child widget using a 'const' constructor.
+// a chance to initialize the child widget using a 'const' constructor.
 // * Use a 'MultiBlocProvider' if more than one bloc is required within the same
 // widget.
 class BlocHome extends StatelessWidget {

@@ -11,7 +11,7 @@ class CounterModel with ChangeNotifier {
   int _counter = 0;
 
   int get currentCount => _counter;
-
+g
   void increment() {
     _counter++;
     // Notify listeners (widgets interested in the state) rather than invoking
